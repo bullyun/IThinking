@@ -98,16 +98,6 @@ public class IdeaWidget extends Group {
         rectBackground.focusedProperty().addListener((observable, oldValue, newValue) -> {
             updateFocusState();
         });
-//        rectBackground.addEventHandler(MouseEvent.ANY, event -> {
-//            if (event.getEventType() == MouseEvent.DRAG_DETECTED
-//                    || event.getEventType() == MouseEvent.MOUSE_DRAGGED
-//                    || event.getEventType() == MouseEvent.MOUSE_RELEASED) {
-//                return;
-//            }
-//
-//            //鼠标消息不传给父对象
-//            event.consume();
-//        });
         rectBackground.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 toEditState();
@@ -123,10 +113,6 @@ public class IdeaWidget extends Group {
                 Event.fireEvent(editor, event.copyFor(event.getSource(), editor));
                 return;
             }
-        });
-        rectBackground.setOnKeyReleased(event -> {
-//            Event.fireEvent(editor, event.copyFor(event.getSource(), editor));
-//            event.consume();
         });
 
         editor.setOnKeyPressed(event -> {
@@ -151,6 +137,8 @@ public class IdeaWidget extends Group {
                 }
             } else if (event.getCode() == KeyCode.ESCAPE) {
                 finishEditState(false);
+            } else if (event.getCode() == KeyCode.SHIFT) {
+                event.consume();
             }
         });
         editor.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -194,6 +182,10 @@ public class IdeaWidget extends Group {
         if (editor.isFocused()) {
             rectBackground.requestFocus();
         }
+    }
+
+    public boolean isEditState() {
+        return editor.isVisible();
     }
 
     public static IdeaWidget getFocusWidget() {
