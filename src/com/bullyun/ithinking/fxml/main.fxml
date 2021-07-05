@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="1049.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bullyun.ithinking.controller.MainController">
+   <children>
+      <MenuBar fx:id="menuBar" layoutY="-2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onNewFile" text="新建" />
+                  <MenuItem mnemonicParsing="false" onAction="#onOpenFile" text="打开" />
+                  <MenuItem mnemonicParsing="false" onAction="#onSaveFile" text="另存为" />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane fx:id="splitePane" dividerPositions="0.35475578406169667" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="387.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <items>
+            <TreeView fx:id="treeView" prefHeight="200.0" prefWidth="181.0" />
+            <Pane fx:id="pane" prefHeight="300.0" prefWidth="350.0">
+               <children>
+                  <Group layoutX="100.0" layoutY="100.0">
+                     <children>
+                        <Group layoutX="-50.0" layoutY="-50.0" />
+                     </children>
+                  </Group>
+               </children></Pane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
